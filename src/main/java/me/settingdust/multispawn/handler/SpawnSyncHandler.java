@@ -38,7 +38,7 @@ public abstract class SpawnSyncHandler {
         @Root Player player,
         @Getter("getTransactions") List<Transaction<BlockSnapshot>> transactions
     ) {
-        if (player.hasPermission(Constants.ID + ".add")) {
+        if (player.hasPermission("spawn.set")) {
             handleEvent(player, transactions, transaction -> handlePlace(transaction, player));
         }
     }
@@ -49,7 +49,7 @@ public abstract class SpawnSyncHandler {
         @Root Player player,
         @Getter("getTransactions") List<Transaction<BlockSnapshot>> transactions
     ) {
-        if (player.hasPermission(Constants.ID + ".remove")) {
+        if (player.hasPermission("spawn.remove")) {
             handleEvent(
                 player,
                 transactions,
