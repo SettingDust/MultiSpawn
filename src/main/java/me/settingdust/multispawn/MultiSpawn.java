@@ -10,6 +10,8 @@ import lombok.experimental.FieldDefaults;
 import lombok.SneakyThrows;
 import me.settingdust.multispawn.api.MultiSpawnService;
 import me.settingdust.multispawn.command.SpawnCommands;
+import me.settingdust.multispawn.handler.FirstSpawnHandler;
+import me.settingdust.multispawn.handler.RespawnHandler;
 import me.settingdust.multispawn.handler.SpawnMarkHandler;
 import me.settingdust.multispawn.handler.SpawnWaystoneHandler;
 import org.spongepowered.api.event.EventManager;
@@ -21,13 +23,15 @@ import org.spongepowered.api.service.ServiceManager;
 
 @Plugin(
     id = Constants.ID,
+    version = "2.1",
     name = "MultiSpawn",
     description = "RPG like plugin. Respawn at the closest spawn point",
-    authors = { "SettingDust" },
-    dependencies = { @Dependency(id = NUCLEUS_ID, optional = true) }
+    authors = {"SettingDust"},
+    dependencies = {@Dependency(id = NUCLEUS_ID, optional = true)}
 )
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class MultiSpawn {
+
     @Inject
     EventManager eventManager;
 
@@ -35,10 +39,12 @@ public class MultiSpawn {
     public MultiSpawn(
         AmberLocale locale,
         SpawnCommands spawnCommands,
-        MultiSpawnService spawnService
+        MultiSpawnService spawnService,
+        RespawnHandler respawnHandler
     ) {
         Objects.requireNonNull(locale);
         Objects.requireNonNull(spawnCommands);
         Objects.requireNonNull(spawnService);
+        Objects.requireNonNull(respawnHandler);
     }
 }
