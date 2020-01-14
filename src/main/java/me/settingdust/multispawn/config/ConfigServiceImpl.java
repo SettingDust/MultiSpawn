@@ -3,22 +3,22 @@ package me.settingdust.multispawn.config;
 import com.google.inject.Inject;
 import java.nio.file.Path;
 import lombok.AccessLevel;
-import lombok.SneakyThrows;
 import lombok.experimental.Delegate;
 import lombok.experimental.FieldDefaults;
+import lombok.SneakyThrows;
 import lombok.val;
 import me.settingdust.multispawn.ConfigService;
-import ninja.leaping.configurate.ConfigurationNode;
 import ninja.leaping.configurate.commented.CommentedConfigurationNode;
+import ninja.leaping.configurate.ConfigurationNode;
 import ninja.leaping.configurate.hocon.HoconConfigurationLoader;
 import ninja.leaping.configurate.loader.ConfigurationLoader;
-import org.spongepowered.api.Sponge;
 import org.spongepowered.api.config.ConfigDir;
-import org.spongepowered.api.event.Listener;
 import org.spongepowered.api.event.game.GameReloadEvent;
 import org.spongepowered.api.event.game.state.GameInitializationEvent;
+import org.spongepowered.api.event.Listener;
 import org.spongepowered.api.event.world.SaveWorldEvent;
 import org.spongepowered.api.plugin.PluginContainer;
+import org.spongepowered.api.Sponge;
 
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class ConfigServiceImpl implements ConfigService {

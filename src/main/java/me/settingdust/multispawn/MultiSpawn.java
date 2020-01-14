@@ -23,17 +23,14 @@ import org.spongepowered.api.service.ServiceManager;
 
 @Plugin(
     id = Constants.ID,
-    version = "2.1",
+    version = "2.2",
     name = "MultiSpawn",
     description = "RPG like plugin. Respawn at the closest spawn point",
-    authors = {"SettingDust"},
-    dependencies = {@Dependency(id = NUCLEUS_ID, optional = true)}
+    authors = { "SettingDust" },
+    dependencies = { @Dependency(id = NUCLEUS_ID, optional = true) }
 )
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class MultiSpawn {
-
-    @Inject
-    EventManager eventManager;
 
     @Inject
     public MultiSpawn(

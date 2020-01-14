@@ -27,6 +27,7 @@ import org.spongepowered.api.plugin.PluginContainer;
 import org.spongepowered.api.plugin.PluginManager;
 import org.spongepowered.api.Sponge;
 import org.spongepowered.api.world.Location;
+import org.spongepowered.api.world.teleport.TeleportHelperFilters;
 import org.spongepowered.api.world.TeleportHelper;
 import org.spongepowered.api.world.World;
 
@@ -34,6 +35,9 @@ import org.spongepowered.api.world.World;
 @Singleton
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class SimpleMultiSpawnService implements MultiSpawnService {
+    @Inject
+    WaystoneTeleportHelperFilter waystoneTeleportHelperFilter;
+
     @Inject
     AmberLocale locale;
 
@@ -120,7 +124,16 @@ public class SimpleMultiSpawnService implements MultiSpawnService {
         } else {
             spawnLocations.parallelStream().findFirst().ifPresent(result::set);
         }
-        teleportHelper.getSafeLocation((Location<World>) result.get()).ifPresent(result::set);
+        teleportHelper
+            .getSafeLocationWithBlacklist(
+                (Location<World>) result.get(),
+                3,
+                9,
+                2,
+                TeleportHelperFilters.DEFAULT,
+                waystoneTeleportHelperFilter
+            )
+            .ifPresent(result::set);
         return result.get();
     }
 

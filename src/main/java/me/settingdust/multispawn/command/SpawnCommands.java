@@ -29,7 +29,6 @@ import org.spongepowered.api.world.World;
 @SuppressWarnings("rawtypes")
 @Singleton
 public class SpawnCommands {
-
     @Inject
     private AmberLocale locale;
 
@@ -78,7 +77,7 @@ public class SpawnCommands {
             Joiner
                 .on(" ")
                 .join(
-                    new Object[]{
+                    new Object[] {
                         (int) location.getX(),
                         (int) location.getY(),
                         (int) location.getZ(),
