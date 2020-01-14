@@ -29,6 +29,7 @@ import org.spongepowered.api.world.World;
 @SuppressWarnings("rawtypes")
 @Singleton
 public class SpawnCommands {
+
     @Inject
     private AmberLocale locale;
 
@@ -52,8 +53,7 @@ public class SpawnCommands {
 
     private PluginContainer pluginContainer;
 
-    public static final String LOCALE_PREFIX = Constants.ID;
-    public static final String COMMAND_PREFIX = LOCALE_PREFIX + ".command";
+    public static final String COMMAND_PREFIX = "spawn.command";
 
     @Inject
     public SpawnCommands(EventManager eventManager, PluginContainer pluginContainer) {
@@ -78,7 +78,7 @@ public class SpawnCommands {
             Joiner
                 .on(" ")
                 .join(
-                    new Object[] {
+                    new Object[]{
                         (int) location.getX(),
                         (int) location.getY(),
                         (int) location.getZ(),

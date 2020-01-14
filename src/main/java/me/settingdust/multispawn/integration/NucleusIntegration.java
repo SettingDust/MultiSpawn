@@ -5,6 +5,7 @@ import com.google.inject.Inject;
 import com.google.inject.Injector;
 import com.google.inject.Singleton;
 import io.github.nucleuspowered.nucleus.api.NucleusAPI;
+import java.util.Objects;
 import javax.annotation.Nullable;
 import lombok.AccessLevel;
 import lombok.SneakyThrows;
@@ -27,13 +28,11 @@ public class NucleusIntegration {
     public NucleusIntegration(
         PluginContainer pluginContainer,
         EventManager eventManager,
-        Injector injector
+        Injector injector,
+        FirstSpawnHandler spawnHandler
     ) {
+        Objects.requireNonNull(spawnHandler);
         NucleusAPI.getModuleService().removeModule("spawn", pluginContainer.getInstance().get());
-        eventManager.registerListeners(
-            pluginContainer,
-            injector.getInstance(FirstSpawnHandler.class)
-        );
     }
 
     public void setWarp(String warpName, Location<World> location, Vector3d rotation) {
